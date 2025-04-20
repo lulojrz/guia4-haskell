@@ -1,9 +1,8 @@
 eliminarUnidades:: Int -> Int
-eliminarUnidades n = div (abs n) 10
+eliminarUnidades n = div n 10
 
 digitoUnidades:: Int -> Int
 digitoUnidades n =  mod n 10
-
 
 factorial :: Int -> Int
 factorial n | n == 0 = 1
@@ -45,18 +44,19 @@ medioFact n | n==0 = 1
             | n==1 = 1
             | n>1 = n * medioFact(n-2)
 
---ejercicio 6
+--ejercicio6
+
 todoDigitos :: Int -> Bool
 todoDigitos n | n> 10 = div n 1 == mod n 10
-              | otherwise = todoDigitos(eliminarUnidades n) 
+              | otherwise = todoDigitos(eliminarUnidades n)
 
 --ejercicio 7
 cantDigitos :: Int -> Int
 cantDigitos n | n <10 = 1
               | otherwise = 1 + cantDigitos(eliminarUnidades n ) 
 
-iesimoDigito :: Int -> Int
-iesimoDigito x i | i == cantidadDeDigitos x = digitoUnidades x
+iesimoDigito :: Int -> Int -> Int
+iesimoDigito x i | i == cantDigitos x = digitoUnidades x
                  | otherwise = iesimoDigito (eliminarUnidades x) i
 
 
@@ -68,7 +68,38 @@ sumaDigitos n | n == 0 = 0
               | otherwise = mod (abs n ) 10 + sumaDigitos(eliminarUnidades n)
 
 
---ejercicio9 
+--ejercicio9  VERIFICAR QUE ES EL UNICO QUE NO CONVENCE
 
 esCapicua :: Int -> Bool
-esCapicua n 
+esCapicua n | 0 <= n && n < 10 = True
+            | 10 <= n && n < 100 = (iesimoDigito n 1) == (iesimoDigito n 2) 
+            | otherwise = primero == ultimo && esCapicua (sacarPrimeroYultimo n)
+               where primero = (iesimoDigito n 1)
+                 ultimo = mod n 10
+
+
+            
+ --requiere que tenga al menos 3 digitos
+  
+ sacarPrimeroYultimo :: Int =
+ > Int
+ sacarPrimeroYultimo n = eliminarUnidades (mod n (10 ^(cantidadDeDigitos n=
+ 1)))
+
+
+
+--ejercicio 10a
+
+funcion10a:: Int -> Int
+funcion10a x  | x == 0 = 1
+              | x== 1 = 2
+              | otherwise = (2^x) + funcion10a(x-1) + 1 
+
+
+--ejercicio 10b
+
+
+funcion10b :: Int -> Int  -> Int
+funcion10b x y | x == 0 = 0
+               | y == 0 = 1
+               | otherwise = x ^ y + funcion10b x (y-1) 
