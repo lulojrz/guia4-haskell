@@ -125,3 +125,27 @@ eAprox 0 = 1.0
 
 
 
+
+
+--ejercicio 16a
+menorDivisorAux::Integer -> Integer -> Integer
+menorDivisorAux n m |  mod n m == 0 = m
+                    | otherwise = menorDivisorAux n (m+1) 
+
+menorDivisor:: Integer-> Integer
+menorDivisor n = menorDivisorAux n 2
+
+--ejercicio  16b
+esPrimo::Integer -> Bool
+esPrimo x | menorDivisor x == x = True 
+          | otherwise= False 
+
+--ejercicio 16c 
+sonCoprimos:: Integer -> Integer -> Bool
+sonCoprimos a b | menorDivisor a  == menorDivisor b  = True
+                | otherwise = False
+
+
+
+
+
