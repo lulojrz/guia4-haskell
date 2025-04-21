@@ -98,8 +98,30 @@ funcion10a x  | x == 0 = 1
 
 --ejercicio 10b
 
-
 funcion10b :: Int -> Int  -> Int
 funcion10b x y | x == 0 = 0
-               | y == 0 = 1
+               | y == 0 = 0 
                | otherwise = x ^ y + funcion10b x (y-1) 
+
+--ejercicio 10c
+
+funcion10c:: Int -> Int  -> Int
+funcion10c x y | x == 0 = 0
+               | y == 0 = 0 
+               | otherwise = funcion10b x (2*y)
+
+--ejercicio 10d
+funcion10d :: Int -> Int  -> Int
+funcion10d x y = funcion10c x y - funcion10b x (y-1)
+
+--ejercicio 11 PREGUNTAR
+eAprox :: Integer -> Float 
+eAprox 0 = 1.0
+
+--ejercicio 12 
+
+
+
+
+
+
