@@ -145,6 +145,16 @@ sonCoprimos:: Integer -> Integer -> Bool
 sonCoprimos a b | menorDivisor a  == menorDivisor b  = True
                 | otherwise = False
 
+--ejercicio 16d
+nEsimoPrimo :: Integer -> Integer
+nEsimoPrimo n = nEsimoPrimoAux n 0 2
+
+
+nEsimoPrimoAux ::Integer -> Integer -> Integer -> Integer
+nEsimoPrimoAux n cont aux | esPrimo aux && cont == n-1 = aux 
+                          | esPrimo aux = nEsimoPrimoAux n (cont+1) (aux +1)
+                          | otherwise = nEsimoPrimoAux n cont (aux+1)  
+
 
 
 
