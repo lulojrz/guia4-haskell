@@ -68,23 +68,7 @@ sumaDigitos n | n == 0 = 0
               | otherwise = mod (abs n ) 10 + sumaDigitos(eliminarUnidades n)
 
 
---ejercicio9  VERIFICAR QUE ES EL UNICO QUE NO CONVENCE
 
-esCapicua :: Int -> Bool
-esCapicua n | 0 <= n && n < 10 = True
-            | 10 <= n && n < 100 = (iesimoDigito n 1) == (iesimoDigito n 2) 
-            | otherwise = primero == ultimo && esCapicua (sacarPrimeroYultimo n)
-               where primero = (iesimoDigito n 1)
-                 ultimo = mod n 10
-
-
-            
- --requiere que tenga al menos 3 digitos
-  
- sacarPrimeroYultimo :: Int =
- > Int
- sacarPrimeroYultimo n = eliminarUnidades (mod n (10 ^(cantidadDeDigitos n=
- 1)))
 
 
 
@@ -114,9 +98,19 @@ funcion10c x y | x == 0 = 0
 funcion10d :: Int -> Int  -> Int
 funcion10d x y = funcion10c x y - funcion10b x (y-1)
 
---ejercicio 11 PREGUNTAR
-eAprox :: Integer -> Float 
-eAprox 0 = 1.0
+--ejercicio 11
+
+factorial :: Integer -> Integer
+factorial n | n == 0 = 1
+            | n >0 = n* factorial(n-1)
+
+eAprox:: Integer -> Float
+eAprox n |n == 0 = 1
+         | otherwise = 1/ fromIntegral (factorial n) + eAprox (n - 1)
+
+e:: Float
+e = eAprox 10
+
 
 --ejercicio 12 
 
