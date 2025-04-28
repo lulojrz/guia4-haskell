@@ -203,3 +203,64 @@ fibonacci n | n==0 = 0
 
 
 
+--ejercicio 18
+esPar :: Int -> Bool
+esPar n = mod n 2 == 0
+
+sacarUltimo :: Int -> Int
+sacarUltimo n = div n 10 
+
+digito :: Int -> Int
+digito n = mod n 10
+
+mayorDigitoPar :: Int -> Int
+mayorDigitoPar n = mayorDigitoParAux n (-1)
+
+mayorDigitoParAux :: Int -> Int -> Int
+mayorDigitoParAux n max | n == 0 = max
+                        | esPar (digito n) && digito n > max = mayorDigitoParAux (sacarUltimo n) (digito n)
+                        | otherwise = mayorDigitoParAux (sacarUltimo n) max 
+
+
+--ejercicio 19
+esSumaInicialDePrimos :: Integer -> Bool
+esSumaInicialDePrimos n = esSumaInicialDePrimosDesde n 1
+
+esSumaInicialDePrimosDesde :: Integer -> Integer -> Bool
+esSumaInicialDePrimosDesde n i | sumaKprimos (i) > n = False
+                               | sumaKprimos (i) < n = esSumaInicialDePrimosDesde n (i+1)
+                               | otherwise = True
+
+sumaKprimos :: Integer -> Integer
+sumaKprimos 1 = 2
+sumaKprimos n = sumaKprimos (n-1) + nEsimoPrimo n
+
+--[20]
+tomaValorMax :: Integer -> Integer -> Integer
+tomaValorMax n m | (n == m) = sumaDivisores(n)
+                 | otherwise = max (sumaDivisores (n)) (tomaValorMax (n+1) m)
+
+sumaDivisores :: Integer -> Integer
+sumaDivisores n = sumaDivisoresDesde n 1
+
+sumaDivisoresDesde :: Integer -> Integer -> Integer
+sumaDivisoresDesde n k | (k == n) = n 
+                       | (k < n) && (mod n k == 0) = k + sumaDivisoresDesde n (k+1)
+                       | (k > n) = 0
+                       | otherwise = sumaDivisoresDesde n (k+1)
+
+
+--21 
+pitagoras :: Int -> Int -> Int -> Int --pensar el ejercicio como una doble sumatoria
+pitagoras m n r | m == 0 = pitagorasAux m n r 
+                | otherwise = pitagorasAux m n r + pitagoras (m-1) n r 
+
+pitagorasAux :: Int -> Int -> Int -> Int
+pitagorasAux m n r | n == 0 = pitagorasValor m n r 
+                   | otherwise = pitagorasValor m n r + pitagorasAux m (n-1) r 
+
+pitagorasValor :: Int -> Int -> Int -> Int
+pitagorasValor p q r | p^2 + q^2 <= r^2 = 1
+                     | otherwise = 0
+
+
