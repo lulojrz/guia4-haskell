@@ -142,12 +142,16 @@ sumaPotenciasAuxiliar q a b | b==1 = q^(a+b)
                             | otherwise = q^(a+b) + sumaPotenciasAuxiliar q a (b-1)
 
 
+--ejercicio 15
 
 
+sumaRacionales :: Integer -> Integer -> Float
+sumaRacionales p q | p == 1 = sumaRacionalesAux 1 q
+                   | otherwise = sumaRacionalesAux p q + sumaRacionales (p-1) q 
 
-
-
-
+sumaRacionalesAux :: Integer -> Integer -> Float
+sumaRacionalesAux p q | q == 1 = fromIntegral p 
+                      | otherwise = (fromIntegral p) / (fromIntegral q) + sumaRacionalesAux p (q-1) 
 
 
 
