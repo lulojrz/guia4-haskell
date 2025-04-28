@@ -112,7 +112,37 @@ e:: Float
 e = eAprox 10
 
 
---ejercicio 12 
+--ejercicio 12
+a:: Integer -> Float
+a 1 = 2
+a n = 2 + (1 / a n-1)
+
+raizde2 :: Integer -> Float
+raizde2 n = a (n) - 1
+
+
+--ejercicio 13
+f :: Integer -> Integer -> Integer
+f i j | i==1 = fAux 1 j 
+      | otherwise = fAux i j + f(i-1) j
+
+fAux :: Integer -> Integer -> Integer
+fAux i j | j == 1 = i 
+         | otherwise = i^j + fAux i (j-1)
+         
+
+
+--ejercicio 14
+sumaPotencias :: Integer -> Integer -> Integer -> Integer
+sumaPotencias q a b | a==1 = sumaPotenciasAuxiliar q 1 b
+                    | otherwise = sumaPotenciasAuxiliar q a b + sumaPotencias q (a-1) b
+
+sumaPotenciasAuxiliar :: Integer -> Integer -> Integer -> Integer
+sumaPotenciasAuxiliar q a b | b==1 = q^(a+b)
+                            | otherwise = q^(a+b) + sumaPotenciasAuxiliar q a (b-1)
+
+
+
 
 
 
